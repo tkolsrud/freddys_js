@@ -28,5 +28,5 @@ mongoose.connection.on("disconnected", function () {
 });
 
 module.exports = {
-
-}
+    Guitar: require("./guitar")
+};
