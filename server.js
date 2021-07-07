@@ -22,37 +22,37 @@ app.use(methodOverride("_method"));
 app.use(express.static(`${__dirname}/public`));
 
 // setup session middelware
-app.use(session({
-    store: MongoStore.create({ mongoURL: process.env.MONGO_URI }),
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        maxAge: 1000 * 60 * 60 * 24
-    }
-}));
+// app.use(session({
+//     store: MongoStore.create({ mongoURL: process.env.MONGO_URI }),
+//     secret: process.env.SESSION_SECRET,
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: {
+//         maxAge: 1000 * 60 * 60 * 24
+//     }
+// }));
 
 // logger middleware
-app.use((req, res, next) => {
-    console.log(`${req.method} - ${req.url}`);
-    console.log(req.session);
-    next();
-});
+// app.use((req, res, next) => {
+//     console.log(`${req.method} - ${req.url}`);
+//     console.log(req.session);
+//     next();
+// });
 
 // authRequired middleware
 
-const authRequired = (req, res, next) => {
-    if (req.session.currentUser) {
-        return next();
-    }
-    return res.redirect("/login");
-};
+// const authRequired = (req, res, next) => {
+//     if (req.session.currentUser) {
+//         return next();
+//     }
+//     return res.redirect("/login");
+// };
 
-app.use((req, res, next) => {
-    app.locals.user = req.session.currentUser;
+// app.use((req, res, next) => {
+//     app.locals.user = req.session.currentUser;
 
-    next();
-});
+//     next();
+// });
 
 /* === Routes/Controllers === */
 // Welcome
