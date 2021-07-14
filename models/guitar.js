@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
-const Scheme = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 const GuitarSchema = new Schema(
     {
         model: { type: String, required: true },
         manufacturer: { type: String, required: true },
-        img: { type: String, require: true }
+        img: { type: String, required: true },
+        year: { type: String, required: true }
     },
     {
         timestamps: true,

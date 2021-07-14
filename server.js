@@ -8,6 +8,9 @@ const db = require("./models");
 /* === Internal Modules === */
 const controllers = require("./controllers");
 
+/* === Instanced Modules === */
+const app = express();
+
 /* === Configuration === */
 require("dotenv").config();
 
@@ -56,19 +59,25 @@ app.use(express.static(`${__dirname}/public`));
 
 /* === Routes/Controllers === */
 // Welcome
-app.get("/", (req, res) => {
-    const context = { user: req.session.currentUser }
-    res.render("Welcome", context);
-});
+// app.get("/", (req, res) => {
+//     const context = { user: req.session.currentUser }
+//     res.render("Welcome", context);
+// });
+
 
 // auth controller
-app.use("/", controller.auth);
+// app.use("/", controllers.auth);
 
 // Main site controller
-app.use("/".authRequired, controllers.site);
+app.use("/", controllers.shop);
 
 // admin controller
-app.use("/", controllers.admin);
+// app.use("/", controllers.admin);
+
+// Home Route
+app.get("/", function (req, res) {
+    res.render("home");
+})
 
 /* === Server Listener === */
 app.listen(process.env.PORT || 5000);

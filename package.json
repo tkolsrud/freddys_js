@@ -4,7 +4,8 @@
   "description": "guitar shop",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "open http://localhost:5000 & nodemon server.js "
   },
   "keywords": [
     "ecommerce",

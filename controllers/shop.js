@@ -13,9 +13,23 @@ router.get("/help", (req, res) => {
 });
 
 /* === Index Route === */
-router.get("/index", (req, res) => {
-    res.render("shop/index");
-})
+router.get("/index", async (req, res) => {
+    try {
+        const query = req.query;
+        console.log(query);
+        if (req.query.year) {
+            req.query.year = { $regex: req.query.year, $options: "i" }
+        }
+
+        const allGuitars = await db.Guitar.find(query);
+        const context = { guitars: allGuitars }
+
+        return res.render('shop/index', context);
+    } catch (err) {
+        console.log(err);
+        return res.send(err);
+    }
+});
 
 /* === Cart Route === */
 router.get("/cart", (req, res) => {
@@ -33,3 +47,6 @@ router.put("/shop/:id", (req, res) => {
 });
 
 /* === Cart Show Route === */
+
+
+module.exports = router;
