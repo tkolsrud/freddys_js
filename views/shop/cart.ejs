@@ -1,4 +1,29 @@
-<%- include ("../partials/header.ejs") %>
-    <h1>Shopping Cart</h1>
+<%- include ("../partials/header.ejs"); %>
 
-    <%- include ("../partials/footer.ejs") %>
+    <%- include ("../partials/nav.ejs"); %>
+
+        <main>
+            <h2 class="header">Your Shopping Cart</h2>
+            <section class="gallery">
+                <% if(!guitars.length) {%>
+                    <p class="">Add items to your Shopping Cart!</p>
+                    <% } %>
+                        <% guitars.forEach(car=> { %>
+                            <a class="card" href="/cart/<%=guitar._id%>">
+                                <div class="card__model">
+                                    Model: <%= guitar.model%>
+                                </div>
+                                <div class="card__manfufacturer">
+                                    Make: <%= guitar.manufacturer%>
+                                </div>
+                                <div class="card__year">
+                                    Year: <%= guitar.year%>
+                                </div>
+                                <div>
+                                    <img class="image__gutiar" src="<%= guitar.img %>" alt="">
+                                </div>
+                            </a>
+                            <% }) %>
+            </section>
+        </main>
+        <%- include ("../partials/footer.ejs") %>

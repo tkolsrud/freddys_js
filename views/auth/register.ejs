@@ -1,0 +1,35 @@
+<%- include ("../partials/header.ejs"); %>
+
+    <%- include ("../partials/nav.ejs"); %>
+
+        <main>
+            <h2 class="header">Registration</h2>
+            <p class="p-register_content">Register An Account To Start Shopping!
+            </p>
+            <!-- Registration Form -->
+            <form class="form-register" action="/register" method="POST">
+                <div class="div-register">
+                    <label for="email">Email:</label>
+                    <input type="email" class="input-email" placeholder="Email" name="email">
+                </div>
+                <div class="div-register">
+                    <label for="username">Username:</label>
+                    <input type="text" class="input-username" placeholder="Username" name="username">
+                </div>
+                <div class="div-register">
+                    <label for="password">Password:</label>
+                    <input id="password" type="password" class="input-password" placeholder="Password" name="password">
+                </div>
+                <div>
+                    <label for="retype-password">Retype Password:</label>
+                    <input class="input-password" id="retypepassword" type="password" name="retype-password" id=""
+                        placeholder="Retype Password">
+                </div>
+                <div>
+                    <span id="passwordcheck"></span>
+                </div>
+                <input class="btn btn-dark" type="submit" value="Submit">
+            </form>
+        </main>
+
+        <%- include ("../partials/footer.ejs"); %>

@@ -1,0 +1,64 @@
+<%- include ("../partials/header.ejs"); %>
+
+    <%- include ("../partials/nav.ejs"); %>
+
+        <main>
+            <h2 class="header">Browse Guitars</h2>
+            <section class="section__select-guitar">
+                <form action="" method="GET">
+                    <label for="form-select">Filter By Model:</label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </form>
+                <form action="" method="GET">
+                    <label for="form-select">Filter By Model:</label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </form>
+                <form action="" method="GET">
+                    <label for="form-select">Filter By Model:</label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </form>
+            </section>
+            <section class="gallery">
+                <% if(!guitars.length) {%>
+                    <p>Select by Model, Manufacturer, or Year!</p>
+                    <% } %>
+                        <% guitars.forEach(guitar=> {%>
+                            <a class="card" href="#">
+                                <div class="card__model">
+                                    Model: <%= guitar.model %>
+                                </div>
+                                <div class="card__manufacturer">
+                                    Manufacturer: <%= guitar.manufacturer %>
+                                </div>
+                                <div class="card__year">
+                                    Year: <%= guitar.year %>
+                                </div>
+                                <div class="img">
+                                    <img class="image__guitar" src="<%= guitar.img %>">
+                                </div>
+                            </a>
+
+
+                            <% }) %>
+
+            </section>
+
+        </main>
+
+
+        <%- include ("../partials/footer.ejs"); %>
