@@ -1,0 +1,31 @@
+<%- include ("../partials/header.ejs"); %>
+
+    <%- include ("../partials/nav.ejs"); %>
+
+        <main>
+            <h2 class="header">Edit Guitar</h2>
+            <!-- Edit Car Form -->
+            <section class="section-form-addnew">
+                <form class="form-addnew" action="/addnew" method="Post">
+                    <div class="div-addnew">
+                        <label for="model">Model:</label>
+                        <input type="text" name="model" placeholder="Model" value="<%=car.model%>" />
+                    </div>
+                    <div class="div-addnew">
+                        <label for="manufacturer">Manufacturer:</label>
+                        <input type="text" name="manufacturer" placeholder="Make" value="<%=car.manufacturer%>" />
+                    </div>
+                    <div class="div-addnew">
+                        <label for="year">Year:</label>
+                        <input type="text" name="year" placeholder="Year" value="<%=car.year%>" />
+                    </div>
+                    <div class="div-addnew">
+                        <label for="img">Image:</label>
+                        <input type="text" name="img" placeholder="Image URL" value="<%=car.img%>" />
+                    </div>
+                    <input class="btn btn-dark input-addnew" type="submit" value="Update Car">
+                </form>
+            </section>
+        </main>
+
+        <%- include ("../partials/footer.ejs");>

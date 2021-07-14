@@ -1,0 +1,33 @@
+<%- include ("../partials/header.ejs") %>
+    <%- include ("../partials/nav.ejs"); %>
+
+        <main>
+            <h2 class="header">Car Info</h2>
+            <!-- Car Info -->
+            <section class="">
+                <img class="" src="<%=guitar.img %>" alt="">
+                <div>
+                    <ul class="">
+                        <li>Model: <%= guitar.model %>
+                        </li>
+                        <li>Manufacturer: <%= guitar.manufacturer %>
+                        </li>
+                        <li>Year: <%=guitar.year%>
+                        </li>
+                        <li>
+                            <form action="/show/<%=guitar._id%>?_method=PUT" method="POST">
+                                <input class="btn btn-dark" type="submit" value="Add To Cart">
+                            </form>
+                        </li>
+                        <!-- Delete Guitar Button -->
+                        <form action="/admin/<%=guitar._id%>?_method=DELETE" method="POST">
+                            <input class="btn btn-removeguitar btn-delete-guitar" type="submit"
+                                value="Remove From Database" />
+                        </form>
+                    </ul>
+                </div>
+
+            </section>
+
+        </main>
+        <%- include ("../partials/footer.ejs") %>
