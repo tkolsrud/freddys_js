@@ -1,4 +1,29 @@
 <%- include ("../partials/header.ejs") %>
-    <h1>Guitar Show Page</h1>
+    <%- include ("../partials/nav.ejs"); %>
 
-    <%- include ("../partials/footer.ejs") %>
+        <main>
+            <h2 class="header">Car Info</h2>
+            <!-- Car Info -->
+            <section class="">
+                <img class="" src="<%=guitar.img %>" alt="">
+                <div>
+                    <ul class="">
+                        <li>Model: <%= guitar.model %>
+                        </li>
+                        <li>Manufacturer: <%= guitar.manufacturer %>
+                        </li>
+                        <li>Year: <%=guitar.year%>
+                        </li>
+                        <li>
+                            <form action="/show/<%=guitar._id%>?_method=PUT" method="POST">
+                                <input class="btn btn-dark" type="submit" value="Add To Cart">
+                            </form>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </section>
+
+        </main>
+        <%- include ("../partials/footer.ejs") %>
