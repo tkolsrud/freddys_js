@@ -4,6 +4,7 @@ const methodOverride = require("method-override");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const db = require("./models");
+const PORT = 5000;
 
 /* === Internal Modules === */
 const controllers = require("./controllers");
@@ -16,6 +17,7 @@ require("dotenv").config();
 
 app.set("view engine", "ejs");
 
+
 /* === Middleware === */
 // body data middleware
 app.use(express.urlencoded({ extended: true }));
@@ -24,38 +26,44 @@ app.use(methodOverride("_method"));
 // middleware to serve public as static files (css)
 app.use(express.static(`${__dirname}/public`));
 
-// setup session middelware
-// app.use(session({
-//     store: MongoStore.create({ mongoURL: process.env.MONGO_URI }),
-//     secret: process.env.SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: false,
-//     cookie: {
-//         maxAge: 1000 * 60 * 60 * 24
-//     }
-// }));
+//setup session middelware
+app.use(session({
+    store: MongoStore.create({ mongoURL: process.env.MONGO_URI }),
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24
+    }
+}));
 
-// logger middleware
-// app.use((req, res, next) => {
-//     console.log(`${req.method} - ${req.url}`);
-//     console.log(req.session);
-//     next();
-// });
+//logger middleware
+app.use((req, res, next) => {
+    console.log(`${req.method} - ${req.url}`);
+    console.log(req.session);
+    next();
+});
+
+// add user credientials to ejs files
+app.use(function (req, res, next) {
+    app.locals.user = req.session.currentUser;
+    next();
+});
 
 // authRequired middleware
 
-// const authRequired = (req, res, next) => {
-//     if (req.session.currentUser) {
-//         return next();
-//     }
-//     return res.redirect("/login");
-// };
+const authRequired = (req, res, next) => {
+    if (req.session.currentUser) {
+        return next();
+    }
+    return res.redirect("/login");
+};
 
-// app.use((req, res, next) => {
-//     app.locals.user = req.session.currentUser;
+app.use((req, res, next) => {
+    app.locals.user = req.session.currentUser;
 
-//     next();
-// });
+    next();
+});
 
 /* === Routes/Controllers === */
 // Welcome
@@ -80,6 +88,6 @@ app.get("/", function (req, res) {
 })
 
 /* === Server Listener === */
-app.listen(process.env.PORT || 5000);
+app.listen(PORT);
 
 app.use(express.static(`public`));

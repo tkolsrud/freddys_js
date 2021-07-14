@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 // connect to mongodb
 require("dotenv").config();
 
-const dbUrl = "mongodb://localhost:27017/freddysguitars_db";
+const dbUrl = process.env.MONGO_URI;
 
 
 // connect mongoose
