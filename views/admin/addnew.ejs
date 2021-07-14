@@ -1,0 +1,28 @@
+<%- include ("../partials/header.ejs"); %>
+
+    <main>
+        <h2>Add New Guitar</h2>
+        <section>
+            <form action="/addnew" method="POST">
+                <div>
+                    <label for="model">Model</label>
+                    <input type="text" name="model" placeholder="Model" />
+                </div>
+                <div>
+                    <label for="manufacturer">Manufacturer</label>
+                    <input type="text" name="manufacturer" placeholder="Manufacturer" />
+                </div>
+                <div>
+                    <label for="img">Image</label>
+                    <input type="text" name="img" placeholder="Image Url" />
+                </div>
+                <div>
+                    <label for="year">Year</label>
+                    <input type="text" name="year" placeholder="Year" />
+                </div>
+                <input type="submit" value="Add Guitar">
+            </form>
+        </section>
+    </main>
+
+    <%- include ("../partials/footer.ejs"); %>

@@ -72,7 +72,7 @@ app.use(express.static(`${__dirname}/public`));
 app.use("/", controllers.shop);
 
 // admin controller
-// app.use("/", controllers.admin);
+app.use("/", controllers.admin);
 
 // Home Route
 app.get("/", function (req, res) {
