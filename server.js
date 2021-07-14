@@ -66,7 +66,7 @@ app.use(express.static(`${__dirname}/public`));
 
 
 // auth controller
-// app.use("/", controllers.auth);
+app.use("/", controllers.auth);
 
 // Main site controller
 app.use("/", controllers.shop);
